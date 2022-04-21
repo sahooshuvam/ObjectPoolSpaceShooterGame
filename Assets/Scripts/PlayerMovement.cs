@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public float playerSpeed;
     public GameObject bullet;
     public Vector3 offsetValue;
+
+    public int health = 100;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,19 @@ public class PlayerMovement : MonoBehaviour
             GameObject bulletFromPool = ObjectPoolScripts.Instance.GetObjectsFromPool("Bullet");
             bulletFromPool.transform.position = this.transform.position + offsetValue;
             bulletFromPool.SetActive(true);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        int healthDecrease = 10;
+        if (collision.gameObject.tag == "Astroid")
+        {
+            health =  Mathf.Clamp(health - healthDecrease,0,100);
+            Debug.Log(health);
+            GameObject tempAstroid = collision.gameObject;
+            tempAstroid.SetActive(false);
+
         }
     }
 }

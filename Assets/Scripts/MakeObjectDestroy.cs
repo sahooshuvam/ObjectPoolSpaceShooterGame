@@ -6,6 +6,6 @@ public class MakeObjectDestroy : MonoBehaviour
 {
     private void OnBecameInvisible()
     {
-        ObjectPoolScripts.Instance.BackToPool(gameObject);
+        gameObject.SetActive(false);
     }
 }
