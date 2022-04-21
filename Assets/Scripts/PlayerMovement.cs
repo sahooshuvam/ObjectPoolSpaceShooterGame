@@ -63,5 +63,16 @@ public class PlayerMovement : MonoBehaviour
             tempAstroid.SetActive(false);
 
         }
+
+        int healthIncreases = 5;
+        if (collision.gameObject.tag == "Health")
+        {
+            health = Mathf.Clamp(health + healthIncreases, 0, 100);
+            healthText.text = health.ToString();
+            Debug.Log(health);
+            GameObject tempHealth = collision.gameObject;
+            tempHealth.SetActive(false);
+
+        }
     }
 }

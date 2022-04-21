@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public float time;
+    public float time1;
    // public GameObject astroidPrefabs;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,15 @@ public class SpawnManager : MonoBehaviour
             astroidFromPool.SetActive(true);
             time = 0f;
         }
-                
+
+        time1 = time1 + Time.deltaTime;
+        if (time1 > 6f)
+        {
+            GameObject healthFromPool = ObjectPoolScripts.Instance.GetObjectsFromPool("Health");
+            healthFromPool.transform.position = new Vector3(this.transform.position.x, Random.Range(-4f, 4f), 0f);
+            healthFromPool.SetActive(true);
+            time1 = 0f;
+        }
+
     }
 }
