@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AstroidMovement : MonoBehaviour
 {
+    public float asteroidSpeed = 12f;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class AstroidMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(-Vector3.right * Time.deltaTime);
+        transform.Translate(-Vector3.right * asteroidSpeed * Time.deltaTime);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 offsetValue;
 
     public int health = 100;
+
+    public Text healthText;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Astroid")
         {
             health =  Mathf.Clamp(health - healthDecrease,0,100);
+            healthText.text = health.ToString();
             Debug.Log(health);
             GameObject tempAstroid = collision.gameObject;
             tempAstroid.SetActive(false);
